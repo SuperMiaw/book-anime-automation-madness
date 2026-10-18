@@ -84,3 +84,7 @@ These repositories are preserved as historical and educational examples, not as 
 There was an earlier attempt to make the code public, but the projects later returned to private development. Their published Git histories were deliberately shortened to protect information from the original environment, so they do not capture the full story of their creation.
 
 This time, the code is being released for good: the repositories will remain public in their current, archived state.
+
+---
+
+[↑ Contents](README.md) · [Next: The cost of convenience →](02-the-cost-of-convenience.md)

@@ -41,3 +41,7 @@ The limitations became clear as well. Poorly documented interfaces, particularly
 This was an experiment, not a demonstration that AI could build a system unaided. It offered a way to lower some of the costs that had kept the web interface on hold, while introducing new reasons to verify every recommendation.
 
 What those three weeks actually produced—and the mistakes uncovered along the way—is the next part of the story.
+
+---
+
+[← Previous: The early days](01-the-early-days.md) · [↑ Contents](README.md) · [Next: Building something bigger →](03-building-something-bigger.md)

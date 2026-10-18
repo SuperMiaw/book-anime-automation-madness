@@ -83,3 +83,7 @@ That's a little frustrating, considering how much it has evolved.
 But while I can't share the entire system, I can still share the story behind it, the technical decisions, and the lessons learned along the way.
 
 And perhaps that's the more interesting part anyway.
+
+---
+
+[← Previous: The cost of convenience](02-the-cost-of-convenience.md) · [↑ Contents](README.md) · [Next: Epilogue →](04-epilogue-the-madness-continues.md)

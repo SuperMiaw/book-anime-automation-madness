@@ -45,3 +45,7 @@ Now I use AI assistants and coding agents to help me build the software that mak
 And you know what?
 
 **I wrote this entire book with the help of a paid AI chatbot.**
+
+---
+
+[← Previous: Building something bigger](03-building-something-bigger.md) · [↑ Contents](README.md)
