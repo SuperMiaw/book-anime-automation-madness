@@ -12,6 +12,12 @@ It explores how existing tools, scripting, system administration, and software d
 
 Some original scripts are available separately as archived repositories for historical and educational purposes.
 
+## Download
+
+[Download the latest stable edition (EPUB / PDF)](https://github.com/SuperMiaw/book-anime-automation-madness/releases/latest)
+
+The latest development build is generated from every push to `main`. Download its EPUB and PDF files from the artifacts of the [GitHub Actions workflow](https://github.com/SuperMiaw/book-anime-automation-madness/actions/workflows/publish-book.yml). Builds can also be triggered manually using **Run workflow**. Artifacts are retained for seven days; tagged editions are published as GitHub Releases.
+
 ## Chapters
 
 1. [The early days](01-the-early-days.md) — Two simple problems, two simple scripts.
