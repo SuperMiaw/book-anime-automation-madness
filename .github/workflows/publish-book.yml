@@ -41,18 +41,27 @@ jobs:
             printf '\n' >> build/book.md
           done
 
+          published="$(date -u +%Y-%m-%d)"
+          edition="Development"
           if [[ "$GITHUB_REF" == refs/tags/* ]]; then
             edition="${GITHUB_REF#refs/tags/}"
-            published="$(date -u +%Y-%m-%d)"
             printf '%s\n' "# Edition" "" "Title: Anime Automation Madness" "" "Author: SuperMiaw" "" "Version: $edition" "" "Published: $published" "" "License: Creative Commons Attribution 4.0 International (CC BY 4.0)" >> build/book.md
-            {
-              printf '%s\n' '\usepackage{fancyhdr}' '\pagestyle{fancy}' '\fancyhf{}'
-              printf '%s\n' '\fancyfoot[C]{\thepage}'
-              printf '%s\n' '\fancyfoot[L]{Anime Automation Madness -- SuperMiaw}'
-              printf '\fancyfoot[R]{%s -- %s -- CC BY 4.0}\n' "$edition" "$published"
-              printf '%s\n' '\renewcommand{\headrulewidth}{0pt}'
-            } > build/footer.tex
           fi
+
+          # Use the same footer for development builds and tagged editions.
+          # Redefine the plain page style too (used on chapter-opening pages).
+          {
+            printf '%s\n' '\usepackage{fancyhdr}'
+            printf '%s\n' '\pagestyle{fancy}' '\fancyhf{}'
+            printf '%s\n' '\fancyfoot[C]{\thepage}'
+            printf '%s\n' '\fancyfoot[L]{Anime Automation Madness -- SuperMiaw}'
+            printf '\fancyfoot[R]{%s -- %s -- CC BY 4.0}\n' "$edition" "$published"
+            printf '%s\n' '\renewcommand{\headrulewidth}{0pt}'
+            printf '%s\n' '\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\fancyfoot[L]{Anime Automation Madness -- SuperMiaw}\fancyfoot[R]{'"$edition"' -- '"$published"' -- CC BY 4.0}\renewcommand{\headrulewidth}{0pt}}'
+            # Pandoc's LaTeX template calls \tableofcontents for the PDF.
+            printf '%s\n' '\let\originaltableofcontents\tableofcontents'
+            printf '%s\n' '\renewcommand{\tableofcontents}{\originaltableofcontents\clearpage}'
+          } > build/footer.tex
 
       - name: Generate EPUB and PDF
         shell: bash
@@ -70,10 +79,7 @@ jobs:
             "${common[@]}" --split-level=1 \
             -o build/anime-automation-madness.epub build/book.md
 
-          pdf_args=()
-          if [[ -f build/footer.tex ]]; then
-            pdf_args+=(--include-in-header=build/footer.tex)
-          fi
+          pdf_args=(--include-in-header=build/footer.tex)
           docker run --rm --user "$(id -u):$(id -g)" \
             -v "$PWD:/data" -w /data pandoc/latex:latest \
             "${common[@]}" "${pdf_args[@]}" \
