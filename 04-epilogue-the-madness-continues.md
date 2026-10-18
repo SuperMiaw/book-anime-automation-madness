@@ -4,9 +4,9 @@ The system I built to manage my anime collection is still part of my everyday li
 
 By that measure, the automation worked.
 
-There is just one amusing problem: I now spend more time developing the system than watching anime.
+There's a certain irony in all this: a system originally built to save time has given me plenty of opportunities to spend time improving it.
 
-Somewhere along the way, the project became a hobby in its own right. What began as an attempt to save time became something I willingly spend time on.
+But that's part of the fun. Automation doesn't always end when the original problem is solved.
 
 ## Beyond anime
 
