@@ -52,12 +52,13 @@ jobs:
           # Redefine the plain page style too (used on chapter-opening pages).
           {
             printf '%s\n' '\usepackage{fancyhdr}'
+            printf '%s\n' '\setlength{\footskip}{42pt}'
+            printf '%s\n' '\setlength{\headheight}{14pt}'
             printf '%s\n' '\pagestyle{fancy}' '\fancyhf{}'
-            printf '%s\n' '\fancyfoot[C]{\thepage}'
-            printf '%s\n' '\fancyfoot[L]{Anime Automation Madness -- SuperMiaw}'
-            printf '%s\n' "\\fancyfoot[R]{$edition -- $published -- CC BY 4.0}"
+            printf '%s\n' "\\newcommand{\\bookfooter}{\\parbox{\\textwidth}{\\centering\\scriptsize Anime Automation Madness -- SuperMiaw\\\\$edition -- $published -- CC BY 4.0 -- Page \\thepage}}"
+            printf '%s\n' '\fancyfoot[C]{\bookfooter}'
             printf '%s\n' '\renewcommand{\headrulewidth}{0pt}'
-            printf '%s\n' '\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\fancyfoot[L]{Anime Automation Madness -- SuperMiaw}\fancyfoot[R]{'"$edition"' -- '"$published"' -- CC BY 4.0}\renewcommand{\headrulewidth}{0pt}}'
+            printf '%s\n' '\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\bookfooter}\renewcommand{\headrulewidth}{0pt}}'
             # Pandoc's LaTeX template calls \tableofcontents for the PDF.
             printf '%s\n' '\let\originaltableofcontents\tableofcontents'
             printf '%s\n' '\renewcommand{\tableofcontents}{\originaltableofcontents\clearpage}'
