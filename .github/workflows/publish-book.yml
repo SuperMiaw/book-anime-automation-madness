@@ -70,7 +70,7 @@ jobs:
           common=(
             --standalone --toc --toc-depth=2
             --metadata title="Anime Automation Madness"
-            --metadata subtitle="From a Few Scripts to a Big System"
+            --metadata subtitle="From a few scripts to a big system"
             --metadata author="SuperMiaw"
             --metadata lang="en"
           )
